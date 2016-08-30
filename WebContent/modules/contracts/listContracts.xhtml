@@ -5,12 +5,26 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 	<!-- use the form tag to set up this form -->
-	<head>
-		<title>JSF Template</title>
-	</head>
+	<h:head>
+		<base href="/" />
+		<title>留言板</title>
+	</h:head>
 	<body>
-		<h:form id="cdForm">
-		</h:form>
+		#{contract.list()}
+			<h:dataTable value="#{contract.contracts}" var="item" >
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputLabel>#{item.cid}</h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">时间</f:facet>
+					<h:outputLabel>#{item.date}</h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">内容</f:facet>
+					<h:outputLabel>#{item.url}</h:outputLabel>
+				</h:column>
+			</h:dataTable>
 	</body>
 	
 </html>

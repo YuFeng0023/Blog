@@ -9,8 +9,10 @@
 		<title>JSF Template</title>
 	</head>
 	<body>
-		<h:form id="cdForm">
+		<h:form id="contractForm">
+			<inputTextarea value="#{contract.contract.content}" />
 		</h:form>
+		<h:commandButton value="提交" action="#{contract.submit}"/>
 	</body>
 	
 </html>

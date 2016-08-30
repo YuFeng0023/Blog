@@ -9,18 +9,23 @@
     </h:head>
     <h:body>
     	<h:form>
-        	用户名：<h:inputText value="#{user.user.username}"></h:inputText><br/>
-        	密码：<h:inputText value="#{user.user.password}"></h:inputText><br/>
-        	确认密码：<h:inputText ></h:inputText><br/>
-        	昵称：<h:inputText value="#{user.user.nickname}"></h:inputText><br/>
-        	头像：<h:inputText value="#{user.user.hphoto}"></h:inputText><br/>
-        	邮箱：<h:inputText value="#{user.user.detail.email}"></h:inputText><br/>
-        	手机号：<h:inputText value="#{user.user.detail.phone}"></h:inputText><br/>
-        	性别：<h:selectOneRadio value="#{user.user.detail.gender}" >
+    	<table>
+        	<tr><td>用户名：</td><td><h:inputText value="#{user.user.username}" /></td></tr>
+        	<tr><td>密码：</td><td><h:inputSecret value="#{user.user.password}" /></td></tr>
+        	<tr><td>确认密码：</td><td><h:inputSecret /></td></tr>
+        	<tr><td>昵称：</td><td><h:inputText value="#{user.user.nickname}" /></td></tr>
+        	<tr><td>头像：</td><td><h:inputText value="#{user.user.hphoto}" /></td></tr>
+        	<tr><td>邮箱：</td><td><h:inputText value="#{user.user.detail.email}" /></td></tr>
+        	<tr><td>手机号：</td><td><h:inputText value="#{user.user.detail.phone}" /></td></tr>
+        	<tr><td>性别：</td><td><h:selectOneRadio value="#{user.user.detail.gender}" >
         			<f:selectItem itemLabel="男" itemValue="男" ></f:selectItem>
         			<f:selectItem itemLabel="女" itemValue="女" ></f:selectItem>
-        		</h:selectOneRadio>  <br/>
-        	<h:commandButton action="#{user.regist}" ></h:commandButton>
+        		</h:selectOneRadio> </td></tr>
+        	<tr><td>生日：</td><td><h:inputText type="date" value="#{user.user.detail.brithday}" /></td></tr>
+        	<tr><td>密保问题：</td><td><h:inputText value="#{user.user.detail.question}" /></td></tr>
+        	<tr><td>密保答案：</td><td><h:inputText value="#{user.user.detail.answer}" /></td></tr>
+        </table>
+        	<h:commandButton value="注册" action="#{user.regist}" ></h:commandButton>
     	</h:form>
     </h:body>
 </html>

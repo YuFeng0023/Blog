@@ -3,7 +3,9 @@
 	<persistence-unit name="Blog" transaction-type="JTA">
 		<!-- <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
 		<jta-data-source>java:/MySqlDS</jta-data-source> 
-		<!-- <properties>
+		<class>com.yufeng.blog.model.Link</class>
+		<class>com.yufeng.blog.model.Contract</class>
+        <!-- <properties>
 			<property name="eclipselink.logging.level" value="FINE"/>
 			<property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/jbossdb"/>
