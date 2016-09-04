@@ -15,7 +15,7 @@ public interface ArticleService {
 	 * 2016年8月25日  下午1:20:05
 	 * @author yufeng
 	 */
-	public String add(Article atc);
+	public Article add(Article atc);
 	/**
 	 * 根据博文ID查找博文
 	 * @param aid 博文ID
@@ -31,7 +31,7 @@ public interface ArticleService {
 	 * 2016年8月25日  下午1:20:05
 	 * @author yufeng
 	 */
-	public String update(Article atc);
+	public Article update(Article atc);
 	/**
 	 * 删除博文
 	 * @param atc
@@ -39,7 +39,7 @@ public interface ArticleService {
 	 * 2016年8月25日  下午1:20:05
 	 * @author yufeng
 	 */
-	public String delete(String aid);
+	public boolean delete(String aid);
 	/**
 	 * 显示博文
 	 * @param atc
@@ -86,4 +86,25 @@ public interface ArticleService {
 	 * @author yufeng
 	 */
 	public void addComment(Comment comment, Article article);
+	/**
+	 * 获取PageBean对象
+	 * @return
+	 * 2016年9月3日  下午2:04:31
+	 * @author yufeng
+	 */
+	public PageBean getPageBean();
+	/**
+	 * 获取当前运行状态
+	 * @return
+	 * 2016年9月3日  下午2:04:57
+	 * @author yufeng
+	 */
+	public int getState();
+	/**
+	 * 获取当前错误信息
+	 * @return
+	 * 2016年9月3日  下午2:05:23
+	 * @author yufeng
+	 */
+	public String getMessage();
 }

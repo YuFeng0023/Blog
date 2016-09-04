@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.HeuristicMixedException;
@@ -18,15 +19,16 @@ import javax.transaction.UserTransaction;
 import com.yufeng.blog.model.Link;
 import com.yufeng.blog.service.LinkService;
 
-@ManagedBean(name = "linkService")
-@RequestScoped
+//@ManagedBean(name = "linkService")
+//@RequestScoped
+@Named
 public class LinkServiceImpl implements LinkService,Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 271080014088355154L;
 	
-	@PersistenceContext(unitName="Blog")
+	@PersistenceContext
 	protected EntityManager manager ;
 	@Resource
     private UserTransaction userTransaction;

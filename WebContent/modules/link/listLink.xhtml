@@ -1,16 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-	<!-- use the form tag to set up this form -->
-	<head>
-		<title>JSF Template</title>
-	</head>
-	<body>
-		<h:form id="cdForm">
-		</h:form>
-	</body>
-	
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<!-- use the form tag to set up this form -->
+<head>
+<base href="#{config.baseUrl}" />
+<title>JSF Template</title>
+</head>
+<body>
+	<h:form id="cdForm">
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>名称</th>
+				<th>图片路径</th>
+				<th>网站链接</th>
+				<th>操作</th>
+			</tr>
+			
+			<c:forEach items="#{link.links}" var="item" >
+				<tr>
+					<td>${item.lid}</td>
+					<td>${item.label}</td>
+					<td>
+							<a href="${item.url}" target="_blank"><img height="33"
+								width="101" src="${item.picUrl}" alt="${item.label}" /></a>
+						</td>
+					<td>#{item.url}</td>
+					<td>
+						<h:commandLink action="#{link.delete}" >删除
+							<f:param name="id" value="${item.lid}" ></f:param>
+						</h:commandLink>
+						&nbsp;&nbsp;
+						<h:commandLink action="#{link.update}" >修改
+							<f:param name="id" value="${item.lid}" ></f:param>
+						</h:commandLink> 
+					</td>
+				</tr>
+			</c:forEach>
+		</table>
+
+	</h:form>
+</body>
+
 </html>

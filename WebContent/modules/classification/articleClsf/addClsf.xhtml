@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+	<!-- use the form tag to set up this form -->
+	<head>
+		<base href="/Blog/"  />
+		<title>添加博文分类</title>
+		<link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="./plugins/chosen/chosen.css" />
+	</head>
+	<body>
+		<h:form id="cdForm" >
+			分类名称：<h:inputText value="#{aclsf.current.label}"></h:inputText><br/>
+			父类：<h:selectOneMenu styleClass="chosen-select" value="#{aclsf.pid}">
+					<f:selectItem itemLabel="无" ></f:selectItem>
+					<f:selectItems value="#{aclsf.all}" var="item" itemLabel="#{item.label}" itemValue="#{item.acid}" ></f:selectItems>
+				</h:selectOneMenu><br/>
+			<h:commandButton styleClass="btn btn-primary" value="提交" action="#{aclsf.add}" ></h:commandButton><br/>
+			<button type="reset" class="btn" >重置</button>
+		</h:form>
+	</body>
+	<script src="./plugins/bootstrap/js/jquery.min.js" ></script>
+	<script src="./plugins/chosen/chosen.jquery.min.js" ></script>
+	
+	<script >
+		$(".chosen-select").chosen({search_contains: true});
+	</script>
+</html>

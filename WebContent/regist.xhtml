@@ -1,31 +1,86 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
-	<h:head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>JSF Template</title>
-    </h:head>
-    <h:body>
-    	<h:form>
-    	<table>
-        	<tr><td>用户名：</td><td><h:inputText value="#{user.user.username}" /></td></tr>
-        	<tr><td>密码：</td><td><h:inputSecret value="#{user.user.password}" /></td></tr>
-        	<tr><td>确认密码：</td><td><h:inputSecret /></td></tr>
-        	<tr><td>昵称：</td><td><h:inputText value="#{user.user.nickname}" /></td></tr>
-        	<tr><td>头像：</td><td><h:inputText value="#{user.user.hphoto}" /></td></tr>
-        	<tr><td>邮箱：</td><td><h:inputText value="#{user.user.detail.email}" /></td></tr>
-        	<tr><td>手机号：</td><td><h:inputText value="#{user.user.detail.phone}" /></td></tr>
-        	<tr><td>性别：</td><td><h:selectOneRadio value="#{user.user.detail.gender}" >
-        			<f:selectItem itemLabel="男" itemValue="男" ></f:selectItem>
-        			<f:selectItem itemLabel="女" itemValue="女" ></f:selectItem>
-        		</h:selectOneRadio> </td></tr>
-        	<tr><td>生日：</td><td><h:inputText type="date" value="#{user.user.detail.brithday}" /></td></tr>
-        	<tr><td>密保问题：</td><td><h:inputText value="#{user.user.detail.question}" /></td></tr>
-        	<tr><td>密保答案：</td><td><h:inputText value="#{user.user.detail.answer}" /></td></tr>
-        </table>
-        	<h:commandButton value="注册" action="#{user.regist}" ></h:commandButton>
-    	</h:form>
-    </h:body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<head>
+	<base href="#{config.baseUrl}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>注册新用户</title>
+</head>
+<h:body>
+	<h:form prependId="false" enctype="multipart/form-data" >
+		<table>
+			<tr>
+				<td>用户名：</td>
+				<td><h:inputText id="用户名" value="#{user.user.username}">
+						<f:validateLength minimum="2" maximum="255"></f:validateLength>
+					</h:inputText> </td>
+				<td><h:message  for="用户名"   ></h:message></td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td><h:inputSecret id="密码" value="#{user.user.password}" >
+						<f:validateLength minimum="8" maximum="255"></f:validateLength>
+					</h:inputSecret>
+				</td>
+				<td><h:message  for="密码"   ></h:message></td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td><h:inputSecret /></td>
+			</tr>
+			<tr>
+				<td>昵称：</td>
+				<td><h:inputText value="#{user.user.nickname}" required="true" /></td>
+			</tr>
+			<tr>
+				<td>头像：</td>
+				<td>
+					<p:fileUpload value="#{user.photo}" mode="simple" required="true" />
+				</td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td><h:inputText value="#{user.user.detail.email}" required="true" /></td>
+			</tr>
+			<tr>
+				<td>手机号：</td>
+				<td><h:inputText value="#{user.user.detail.phone}"  /></td>
+			</tr>
+			<tr>
+				<td>性别：</td>
+				<td><h:selectOneRadio value="#{user.user.detail.gender}">
+						<f:selectItem itemLabel="男" itemValue="男"></f:selectItem>
+						<f:selectItem itemLabel="女" itemValue="女"></f:selectItem>
+					</h:selectOneRadio></td>
+			</tr>
+			<!-- <tr>
+				<td>生日：</td>
+				<td><h:inputText type="date" styleClass="date form_date"
+						value="#{user.user.detail.brithday}" >
+						<f:convertDateTime pattern="yyyy-MM-dd"></f:convertDateTime>
+						
+						</h:inputText></td>
+			</tr> -->
+			<tr>
+				<td>密保问题：</td>
+				<td>
+				<h:selectOneMenu value="#{user.user.detail.question}">
+					<f:selectItems value="#{sq.questions}" var="item" itemLabel="#{item}" itemValue="#{item}" ></f:selectItems>
+				</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>密保答案：</td>
+				<td><h:inputText value="#{user.user.detail.answer}" required="" /></td>
+			</tr>
+		</table>
+		<h:commandButton value="注册" action="#{user.regist}"></h:commandButton>
+	</h:form>
+	<script>
+	</script>
+</h:body>
 </html>

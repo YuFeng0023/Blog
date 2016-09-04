@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+	<!-- use the form tag to set up this form -->
+	<head>
+		<base href="/LinkModule/"  />
+		<title>JSF Template</title>
+	</head>
+	<body>
+		#{link.list()}
+		<h:form id="cdForm">
+			<h:inputSecret value="#{link.lid}" ></h:inputSecret>
+			<h:dataTable value="#{link.links}" var="item" >
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					<h:outputLabel>#{item.lid}</h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">名称</f:facet>
+					<h:outputLabel>#{item.label}</h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">图片路径</f:facet>
+					<h:outputLabel> <a href="#{item.url}" target="_blank" ><img height="33" width="101" src="#{item.picUrl}" alt="#{item.label}" /></a> </h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">网站链接</f:facet>
+					<h:outputLabel>#{item.url}</h:outputLabel>
+				</h:column>
+				<h:column>
+					<f:facet name="header">操作</f:facet>
+					<h:button onclick="#{link.update}" >修改</h:button>
+					<a href="./modules/link/update.jsp?id=#{item.lid}" >修改</a>&nbsp;&nbsp;
+				</h:column>
+			</h:dataTable>
+			<h:commandButton action="#{link.update}" value="af" >
+				<f:param name="id" value="asd" ></f:param>
+			</h:commandButton>
+		</h:form>
+	</body>
+	
+</html>

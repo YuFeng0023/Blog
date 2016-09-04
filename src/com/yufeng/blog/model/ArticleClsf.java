@@ -1,9 +1,17 @@
 package com.yufeng.blog.model;
 
-public class ArticleClsf {
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+@Entity
+public class ArticleClsf implements Serializable {
+	private static final long serialVersionUID = 4229022411427262554L;
+	@Id
 	protected String acid;
 	protected String label;
-	protected ArticleClsf fid = null;
+	@ManyToOne(targetEntity=ArticleClsf.class,cascade=CascadeType.REMOVE)
+	protected ArticleClsf fid;
 	public String getAcid() {
 		return acid;
 	}
@@ -21,5 +29,10 @@ public class ArticleClsf {
 	}
 	public void setFid(ArticleClsf fid) {
 		this.fid = fid;
+	}
+	@Override
+	public String toString() {
+		return "ArticleClsf [acid=" + acid + ", label=" + label + ", fid="
+				+ fid + "]";
 	}
 }

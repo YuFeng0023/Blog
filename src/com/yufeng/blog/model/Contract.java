@@ -10,6 +10,7 @@ public class Contract {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int cid;
 	protected String nickname;
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date date;
 	protected String content;
 	public int getCid() {

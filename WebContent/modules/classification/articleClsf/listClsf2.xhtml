@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<!-- use the form tag to set up this form -->
+<head>
+<base href="/Blog/" />
+<title>博文分类列表</title>
+<link rel="stylesheet" href="./plugins/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+	<h:form id="location">
+		当前位置：
+			<h:commandLink action="#{aclsf.toTop}" >博文分类</h:commandLink>
+		<br/>
+	</h:form>
+	<h:form id="shower">
+		<h:commandButton value="显示全部" action="" ></h:commandButton>
+		<h:commandButton value="显示顶级" action="" ></h:commandButton>
+		<table>
+			<tr>
+				<td>Index</td>
+				<td>Label</td>
+				<td>ID</td>
+				<td>操作</td>
+			</tr>
+			<c:forEach items="${aclsf.all}" var="clsf" varStatus="status">
+				<tr>
+					<td>${status.index+1}</td>
+					<td>${clsf.label}</td>
+					<td>${clsf.acid}</td>
+					<td><h:commandLink action="#{aclsf.toUpdate}"> up[date]
+							<f:param name="currentId" value="${clsf.acid}"></f:param>
+						</h:commandLink>
+						
+						<h:commandLink action="#{aclsf.delete}">delete
+							<f:param name="currentId" value="${clsf.acid}"></f:param>
+						</h:commandLink></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</h:form>
+	<h:form id="deleter">
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">请确认：</h4>
+					</div>
+					<div class="modal-body">
+						是否删除"
+						<h:outputLabel id="showLabel" value="#{aclsf.current.label}"></h:outputLabel>
+						"这一分类？
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<h:commandButton class="btn btn-danger" action="#{aclsf.delete}">
+						       确定删除
+						  <f:param name="pid" id="showID" value="#{aclsf.current.acid}"></f:param>
+						</h:commandButton>
+					</div>
+				</div>
+				/.modal-content
+			</div>
+			/.modal
+		</div>
+	</h:form>
+
+</body>
+<script src="./plugins/bootstrap/js/jquery.min.js"></script>
+<script src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+<script>
+	
+</script>
+</html>

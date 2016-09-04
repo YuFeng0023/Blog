@@ -5,6 +5,11 @@
 		<jta-data-source>java:/MySqlDS</jta-data-source> 
 		<class>com.yufeng.blog.model.Link</class>
 		<class>com.yufeng.blog.model.Contract</class>
+		<class>com.yufeng.blog.model.ArticleClsf</class>
+		<class>com.yufeng.blog.model.Article</class>
+		<class>com.yufeng.blog.model.User</class>
+		<class>com.yufeng.blog.model.UserDetail</class>
+		<class>com.yufeng.blog.model.Comment</class>
         <!-- <properties>
 			<property name="eclipselink.logging.level" value="FINE"/>
 			<property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

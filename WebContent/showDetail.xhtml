@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<head>
+	<base href="#{config.baseUrl}" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>注册新用户</title>
+</head>
+<h:body>
+	<h:form prependId="false">
+		<table>
+			<tr>
+				<td>用户名：</td>
+				<td><h:outputText  value="#{user.user.username}">
+					</h:outputText> </td>
+				
+			</tr>
+			<tr>
+				<td>昵称：</td>
+				<td><h:outputText value="#{user.user.nickname}"  /></td>
+			</tr>
+			<tr>
+				<td>头像：</td>
+				<td>
+					<img src="#{link.photo}" ></img>
+				</td>
+			</tr>
+			<tr>
+				<td>邮箱：</td>
+				<td><h:outputText value="#{user.user.detail.email}"  /></td>
+			</tr>
+			<tr>
+				<td>手机号：</td>
+				<td><h:outputText value="#{user.user.detail.phone}"  /></td>
+			</tr>
+			<tr>
+				<td>性别：</td>
+				<td><h:outputText value="#{user.user.detail.gender}"></h:outputText></td>
+			</tr>
+			<tr>
+				<td>密保问题：</td>
+				<td>
+				<h:selectOneMenu value="#{user.user.detail.question}">
+					<f:selectItems value="#{sq.questions}" var="item" itemLabel="#{item}" itemValue="#{item}" ></f:selectItems>
+				</h:selectOneMenu>
+				</td>
+			</tr>
+			<tr>
+				<td>密保答案：</td>
+				<td><h:outputText value="#{user.user.detail.answer}"  /></td>
+			</tr>
+		</table>
+		<h:commandButton value="注册" action="#{user.regist}"></h:commandButton>
+	</h:form>
+	<script>
+	</script>
+</h:body>
+</html>

@@ -42,5 +42,5 @@ public interface PhotoClsfService {
 	 * @author yufeng
 	 */
 	public void deleteClsf(String pid);
-
+	List<PhotoClsf> querySons(String acid);
 }

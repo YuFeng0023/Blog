@@ -2,9 +2,7 @@ package com.yufeng.blog.service;
 
 import java.util.List;
 
-import com.yufeng.blog.model.Article;
 import com.yufeng.blog.model.Comment;
-import com.yufeng.blog.model.BlogCalendar;
 import com.yufeng.blog.model.PageBean;
 
 public interface CommentService {
@@ -16,7 +14,7 @@ public interface CommentService {
 	 * 2016年8月30日  下午4:35:59
 	 * @author yufeng
 	 */
-	public String add(Comment atc,String article);
+	public Comment add(Comment atc,String article);
 	/**
 	 * 根据博文ID查找博文
 	 * @param aid 博文ID
@@ -40,12 +38,13 @@ public interface CommentService {
 	 * 2016年8月25日  下午1:20:05
 	 * @author yufeng
 	 */
-	public String delete(String aid);
+	public boolean delete(String aid);
 	/**
-	 * 显示博文
-	 * @param atc
+	 * 列出评论
+	 * @param aid 文章ID
+	 * @param page 
 	 * @return
-	 * 2016年8月25日  下午1:20:05
+	 * 2016年9月3日  下午5:27:09
 	 * @author yufeng
 	 */
 	public List<Comment> list(PageBean page);
@@ -65,4 +64,25 @@ public interface CommentService {
 	 * @author yufeng
 	 */
 	public List<Comment> queryByArticle(String aid,PageBean num);
+	/**
+	 * 查询之后获得PageBean对象
+	 * @return
+	 * 2016年9月3日  下午5:37:26
+	 * @author yufeng
+	 */
+	public PageBean getPageBean();
+	/**
+	 * 获得当前运行状态
+	 * @return
+	 * 2016年9月3日  下午5:37:56
+	 * @author yufeng
+	 */
+	public int getState();
+	/**
+	 * 获得当前运行信息（如果出错的话）
+	 * @return
+	 * 2016年9月3日  下午5:38:19
+	 * @author yufeng
+	 */
+	public String getMessage();
 }

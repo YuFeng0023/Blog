@@ -41,16 +41,16 @@ public interface UserService {
 	 * 2016年8月25日  下午1:17:37
 	 * @author yufeng
 	 */
-	public String findPassword(User user) throws Exception;
-	/**
-	 * 通过密保问题找回密码
-	 * @param user
-	 * @return 返回密码链接，如果用户信息无效则返回空
-	 * @throws Exception
-	 * 2016年8月25日  下午1:17:37
-	 * @author yufeng
-	 */
-	public String findPasswordByQuestion(User user) throws Exception;
+	public boolean findPassword(User user) throws Exception;
+//	/**
+//	 * 通过密保问题找回密码
+//	 * @param user
+//	 * @return 返回密码链接，如果用户信息无效则返回空
+//	 * @throws Exception
+//	 * 2016年8月25日  下午1:17:37
+//	 * @author yufeng
+//	 */
+//	public String findPasswordByQuestion(User user) throws Exception;
 	/**
 	 * 获得收藏文章
 	 * @return
@@ -81,4 +81,20 @@ public interface UserService {
 	 * @author yufeng
 	 */
 	public boolean deleteUser(int id);
+	/**
+	 * 通过用户名获取具体的对象
+	 * @param username
+	 * @return
+	 * 2016年9月2日  下午3:21:02
+	 * @author yufeng
+	 */
+	public User getByUsername(String username);
+	/**
+	 * 通过用户名获取对象
+	 * @param email
+	 * @return
+	 * 2016年9月2日  下午10:00:58
+	 * @author yufeng
+	 */
+	public User getByEmail(String email);
 }

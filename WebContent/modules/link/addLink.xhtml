@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<!-- use the form tag to set up this form -->
+<head>
+<title>添加友情链接</title>
+</head>
+<body>
+	<h:form id="cdForm" enctype="multipart/form-data" >
+		名称：<h:inputText value="#{link.link.label}"  ></h:inputText><br/>
+		图标：<p:fileUpload value="#{link.photo}" mode="simple" /><br/>
+		网址：<h:inputText value="#{link.link.url}" ></h:inputText><br/>
+		<h:commandButton action="#{link.addLink}" ></h:commandButton>
+	</h:form>
+</body>
+
+</html>

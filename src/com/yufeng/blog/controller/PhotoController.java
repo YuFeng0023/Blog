@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import com.yufeng.blog.model.Photo;
 import com.yufeng.blog.model.PageBean;
 import com.yufeng.blog.service.PhotoService;
-@ManagedBean(name="ac")
+@ManagedBean(name="pc")
 @RequestScoped
 public class PhotoController {
 	protected Photo photo = new Photo();

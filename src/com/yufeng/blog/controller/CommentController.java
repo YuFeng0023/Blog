@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import com.yufeng.blog.model.Comment;
 import com.yufeng.blog.model.PageBean;
 import com.yufeng.blog.service.CommentService;
-@ManagedBean(name="ac")
+@ManagedBean(name="cc")
 @RequestScoped
 public class CommentController {
 	protected Comment comment = new Comment();

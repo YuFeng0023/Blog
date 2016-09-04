@@ -42,5 +42,34 @@ public interface ArticleClsfService {
 	 * @author yufeng
 	 */
 	public void deleteClsf(String pid);
-
+	/**
+	 * 根据ID获取
+	 * @param cid 当前分类ID
+	 * 2016年8月31日  下午3:36:19
+	 * @author yufeng
+	 */
+	public ArticleClsf get(String cid);
+	/**
+	 * 获取一级分类
+	 * @return
+	 * 2016年9月1日  下午1:49:52
+	 * @author yufeng
+	 */
+	public List<ArticleClsf> queryTop();
+	/**
+	 * 查询某一分类的父类
+	 * @param acid
+	 * @return
+	 * 2016年9月1日  下午10:43:41
+	 * @author yufeng
+	 */
+	public List<ArticleClsf> queryFather(String acid);
+	/**
+	 * 查询子类
+	 * @param pacid
+	 * @return
+	 * 2016年9月1日  下午11:00:21
+	 * @author yufeng
+	 */
+	public List<ArticleClsf> querySons(String pacid);
 }

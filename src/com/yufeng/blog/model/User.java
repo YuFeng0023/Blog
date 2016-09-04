@@ -1,12 +1,27 @@
 package com.yufeng.blog.model;
 
-public class User {
+import java.io.Serializable;
+
+import javax.persistence.*;
+
+import org.apache.commons.lang.StringUtils;
+@Entity
+public class User implements Serializable  {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8701904977274817184L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	protected int uid;
-	protected String username;
-	protected String password;
+	@Column(nullable=false,unique=true)
+	protected String username="";
+	protected String password = "";
 	protected String nickname;
 	protected String hphoto;
 	protected int level;
+	@OneToOne(cascade=CascadeType.REMOVE)
+	@JoinColumn
 	protected UserDetail detail = new UserDetail();
 	public int getUid() {
 		return uid;
@@ -24,18 +39,27 @@ public class User {
 		return password;
 	}
 	public void setPassword(String password) {
+		if(StringUtils.isBlank(password)){
+			return ;
+		}
 		this.password = password;
 	}
 	public String getNickname() {
 		return nickname;
 	}
 	public void setNickname(String nickname) {
+		if(StringUtils.isBlank(nickname)){
+			return;
+		}
 		this.nickname = nickname;
 	}
 	public String getHphoto() {
 		return hphoto;
 	}
 	public void setHphoto(String hphoto) {
+		if(StringUtils.isBlank(hphoto)){
+			return;
+		}
 		this.hphoto = hphoto;
 	}
 	public int getLevel() {
@@ -49,5 +73,11 @@ public class User {
 	}
 	public void setDetail(UserDetail detail) {
 		this.detail = detail;
+	}
+	@Override
+	public String toString() {
+		return "User [uid=" + uid + ", username=" + username + ", password="
+				+ password + ", nickname=" + nickname + ", hphoto=" + hphoto
+				+ ", level=" + level + ", detail=" + detail + "]";
 	}
 }
